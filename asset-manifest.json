@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tarefa/static/css/main.37b87ad5.css",
+    "main.js": "/tarefa/static/js/main.3d6706c2.js",
+    "static/js/787.f2aab731.chunk.js": "/tarefa/static/js/787.f2aab731.chunk.js",
+    "index.html": "/tarefa/index.html",
+    "main.37b87ad5.css.map": "/tarefa/static/css/main.37b87ad5.css.map",
+    "main.3d6706c2.js.map": "/tarefa/static/js/main.3d6706c2.js.map",
+    "787.f2aab731.chunk.js.map": "/tarefa/static/js/787.f2aab731.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37b87ad5.css",
+    "static/js/main.3d6706c2.js"
+  ]
+}
