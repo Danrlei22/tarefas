@@ -4,9 +4,17 @@
   text-align: center;
 }
 
+.titleH1 {
+  font-size: 30px;
+}
+
+.titleH2 {
+  font-size: 20px;
+  text-align: center;
+}
+
 .formTodo {
-  padding: 1em;
-  margin: 0 2em;
+  padding: 0.5em;
   border-bottom: 1px solid #2c3035;
 }
 
@@ -16,17 +24,25 @@
   margin-bottom: 1em;
 }
 
-.formControl label {
+.labelTask {
   font-weight: bold;
-  margin-bottom: 0.7em;
-  margin-bottom: 0.4em;
+  margin: 0 0.5em;
+  padding: 0.2em;
+}
+
+.inputTask {
+  margin: 0 0.5em;
+}
+
+.inputTime{
+  margin: 0 0.5em;
 }
 
 .formControl input {
   border: 1px solid #222;
   border-radius: 2px;
   background-color: #2c3035;
-  padding: 0.5em;
+  padding: 0.3em;
   color: #fff;
 }
 
@@ -41,4 +57,10 @@
   cursor: pointer;
   display: block;
   margin: 0 auto;
+  transition: all 0.3s;
+}
+
+.btnSubmit:hover {
+  background-color: #0f0;
+  transform: scale(1.1);
 }
