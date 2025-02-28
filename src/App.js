@@ -1,79 +1,57 @@
-import './App.css';
+import { useState, useEffect } from "react";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 
-import { useState, useEffect } from 'react';
-import { BsTrash, BsBookmarkCheck, BsBookmarkCheckFill } from 'react-icons/bs';
-
+import "./App.css";
 
 const API = "http://localhost:5000";
 
 function App() {
-
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const fetchTodos = async () => {
+    setLoading(true);
+    const response = await fetch(API + "/todos");
+    const data = await response.json();
+    setTodos(data);
+    setLoading(false);
+  };
 
+  const handleSubmit = async (newTodo) => {
     const todo = {
-      id: Math.random(),
-      title,
-      time,
-      done: false
-    }
+      id: Date.now(),
+      ...newTodo,
+      done: false,
+    };
 
     await fetch(API + "/todos", {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(todo),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+        "content-type": "application/json",
+      },
+    });
 
-    setTitle("");
-    setTime("");
-  }
+    fetchTodos();
+  };
+
+  const handleDelete = async (id) => {
+    await fetch(`${API}/todos/${id}`, {
+      method: "DELETE",
+    });
+    fetchTodos();
+  };
+
+  useEffect(() => {
+    fetchTodos();
+  }, []);
 
   return (
     <div className="App">
-      <div className="todo-header">
-        <h1>React TODO</h1>
-      </div>
-      <div className="form-todo">
-        <h2>Insira sua próxima tarefa:</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-control">
-            <label htmlFor="title">Tarefa:</label>
-            <input
-              type="text"
-              name="title"
-              placeholder="Título da tarefa"
-              onChange={(e) => setTitle(e.target.value)}
-              value={title || ""}
-              required
-            />
-          </div>
-
-          <div className="form-control">
-            <label htmlFor="time">Duração:</label>
-            <input
-              type="text"
-              name="time"
-              placeholder="Tempo estimado (em horas)"
-              onChange={(e) => setTime(e.target.value)}
-              value={time || ""}
-              required
-            />
-          </div>
-
-          <input type="submit" value="Criar tarefa" />
-        </form>
-      </div>
-      <div>
-        <p>Lista de tarefas</p>
-        {todos.length === 0 && <p>Não há tarefas!</p>}
-      </div>
+      <TodoForm onSubmit={handleSubmit} />
+      <h2 className="titleList">Lista de tarefas</h2>
+      <TodoList todos={todos} onDelete={handleDelete} loading={loading} />
     </div>
   );
 }
