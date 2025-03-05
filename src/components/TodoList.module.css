@@ -4,3 +4,34 @@
   font-weight: bold;
   color: #f00;
 }
+
+.tableList {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 1em auto;
+  color: #000;
+  background-color: #d7d7d7;
+}
+
+.tableList th,
+.tableList td {
+  border: 1px solid #000;
+  padding: 3px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.iconEditTable {
+  cursor: pointer;
+  color: orange;
+  font-size: 18px !important;
+  border: none;
+  background: none;
+}
+
+.iconDeleteTable {
+  cursor: pointer;
+  color: red;
+  border: none;
+  background: none;
+}

@@ -49,7 +49,7 @@ const TodoForm = ({ onSubmit }) => {
           />
         </div>
 
-        <input className={styles.btnSubmit} type="submit" value="Criar tarefa" />
+        <input className={styles.btnSubmit} type="submit" value="Criar" />
       </form>
     </>
   );
