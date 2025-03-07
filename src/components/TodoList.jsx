@@ -39,7 +39,7 @@ const TodoList = ({ todos, onDelete, loading }) => {
               <td>
                 <button
                   className={styles.iconDeleteTable}
-                  onClick={() => onDelete(todo.id)}
+                  onClick={() => onDelete(todo.id, todo.title)}
                 >
                   <BsTrash />
                 </button>

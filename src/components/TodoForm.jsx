@@ -29,7 +29,7 @@ const TodoForm = ({ onSubmit }) => {
           className={styles.inputTask}
             type="text"
             id="title"
-            placeholder="Título da tarefa"
+            placeholder="Descrição da tarefa"
             onChange={(e) => setTitle(e.target.value)}
             value={title || ""}
             required
@@ -40,7 +40,7 @@ const TodoForm = ({ onSubmit }) => {
           <label className={styles.labelTask} htmlFor="time">Duração:</label>
           <input
            className={styles.inputTime}
-            type="text"
+            type="number"
             id="time"
             placeholder="Tempo estimado (em horas)"
             onChange={(e) => setTime(e.target.value)}
@@ -49,7 +49,7 @@ const TodoForm = ({ onSubmit }) => {
           />
         </div>
 
-        <input className={styles.btnSubmit} type="submit" value="Criar" />
+        <button className={styles.btnSubmit} type="submit">Criar</button>
       </form>
     </>
   );

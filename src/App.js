@@ -3,6 +3,8 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 import "./App.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const API = "http://localhost:5000";
 
@@ -20,12 +22,11 @@ function App() {
 
   const handleSubmit = async (newTodo) => {
     const todo = {
-      id: Date.now(),
       ...newTodo,
       done: false,
     };
 
-    await fetch(API + "/todos", {
+    const response = await fetch(API + "/todos", {
       method: "POST",
       body: JSON.stringify(todo),
       headers: {
@@ -33,14 +34,26 @@ function App() {
       },
     });
 
-    fetchTodos();
+    if (response.ok) {
+      const data = await response.json();
+      setTodos((prevTodos) => [...prevTodos, data]);
+      toast.success(`Tarefa "${data.title}" adicionada com sucesso!`);
+    } else {
+      toast.error("Erro ao adicionar tarefa.");
+    }
   };
 
-  const handleDelete = async (id) => {
-    await fetch(`${API}/todos/${id}`, {
+  const handleDelete = async (id, title) => {
+    const response = await fetch(`${API}/todos/${id}`, {
       method: "DELETE",
     });
-    fetchTodos();
+
+    if (response.ok) {
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+      toast.error(`Tarefa "${title}" deletada com sucesso!`);
+    } else {
+      toast.error("Erro ao deletar todo:", response.statusText);
+    }
   };
 
   useEffect(() => {
@@ -52,6 +65,10 @@ function App() {
       <TodoForm onSubmit={handleSubmit} />
       <h2 className="titleList">Lista de tarefas</h2>
       <TodoList todos={todos} onDelete={handleDelete} loading={loading} />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+      />
     </div>
   );
 }
