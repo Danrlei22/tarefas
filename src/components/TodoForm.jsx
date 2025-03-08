@@ -1,32 +1,35 @@
-import React, { useState } from "react";
-
 import styles from "./TodoForm.module.css";
 
-const TodoForm = ({ onSubmit }) => {
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
-
-  const handleSubmit = (e) => {
+const TodoForm = ({
+  onSubmit,
+  title,
+  setTitle,
+  startTime,
+  setStartTime,
+  endTime,
+  setEndTime,
+}) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ title, time });
+    onSubmit({ title, startTime, endTime });
 
     setTitle("");
-    setTime("");
+    setStartTime("");
+    setEndTime("");
   };
 
   return (
     <>
       <div className={styles.todoHeader}>
-        <h1 className={styles.titleH1}>Tarefas</h1>
+        <h1 className={styles.titleH1}>Planejamento Diário</h1>
       </div>
       <div className={styles.formTodo}>
         <h2 className={styles.titleH2}>Insira sua próxima tarefa:</h2>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <div className={styles.formControl}>
-          <label className={styles.labelTask} htmlFor="title">Tarefa:</label>
           <input
-          className={styles.inputTask}
+            className={styles.inputTask}
             type="text"
             id="title"
             placeholder="Descrição da tarefa"
@@ -36,20 +39,39 @@ const TodoForm = ({ onSubmit }) => {
           />
         </div>
 
-        <div className={styles.formControl}>
-          <label className={styles.labelTask} htmlFor="time">Duração:</label>
-          <input
-           className={styles.inputTime}
-            type="number"
-            id="time"
-            placeholder="Tempo estimado (em horas)"
-            onChange={(e) => setTime(e.target.value)}
-            value={time || ""}
-            required
-          />
+        <div className={styles.containerTime}>
+          <div className={styles.formControl}>
+            <label className={styles.labelTask} htmlFor="startTime">
+              Início:
+            </label>
+            <input
+              className={styles.inputTime}
+              type="time"
+              id="startTime"
+              onChange={(e) => setStartTime(e.target.value)}
+              value={startTime || ""}
+              required
+            />
+          </div>
+
+          <div className={styles.formControl}>
+            <label className={styles.labelTask} htmlFor="endTime">
+              Fim:
+            </label>
+            <input
+              className={styles.inputTime}
+              type="time"
+              id="endTime"
+              onChange={(e) => setEndTime(e.target.value)}
+              value={endTime || ""}
+              required
+            />
+          </div>
         </div>
 
-        <button className={styles.btnSubmit} type="submit">Criar</button>
+        <button className={styles.btnSubmit} type="submit">
+          Criar
+        </button>
       </form>
     </>
   );

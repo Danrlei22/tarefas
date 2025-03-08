@@ -2,10 +2,12 @@
   padding: 0.5em;
   border-bottom: 1px solid #2c3035;
   text-align: center;
+  ;
 }
 
 .titleH1 {
-  font-size: 30px;
+  font-size: 25px;
+  color: #FFD700;
 }
 
 .titleH2 {
@@ -13,9 +15,10 @@
   text-align: center;
 }
 
-.formTodo {
-  padding: 0.5em;
-  border-bottom: 1px solid #2c3035;
+.containerTime{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .formControl {
@@ -26,16 +29,17 @@
 
 .labelTask {
   font-weight: bold;
-  margin: 0 0.5em;
+  margin: 0 auto;
   padding: 0.2em;
 }
 
 .inputTask {
-  margin: 0 0.5em;
+  margin: 0 1em;
 }
 
 .inputTime{
   margin: 0 0.5em;
+  width: 70px;
 }
 
 .formControl input {

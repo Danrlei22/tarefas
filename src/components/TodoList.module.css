@@ -21,14 +21,6 @@
   font-size: 14px;
 }
 
-.iconEditTable {
-  cursor: pointer;
-  color: orange;
-  font-size: 18px !important;
-  border: none;
-  background: none;
-}
-
 .iconDeleteTable {
   cursor: pointer;
   color: red;

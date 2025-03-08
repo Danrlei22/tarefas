@@ -1,4 +1,3 @@
-import { TiEdit } from "react-icons/ti";
 import Loading from "./Loading";
 
 import styles from "./TodoList.module.css";
@@ -20,8 +19,8 @@ const TodoList = ({ todos, onDelete, loading }) => {
           <tr>
             <th>Nº</th>
             <th>Descrição</th>
-            <th>Tempo</th>
-            <th>Editar</th>
+            <th>Início</th>
+            <th>Fim</th>
             <th>Deletar</th>
           </tr>
         </thead>
@@ -30,12 +29,8 @@ const TodoList = ({ todos, onDelete, loading }) => {
             <tr key={todo.id}>
               <td>{index + 1}</td>
               <td>{todo.title}</td>
-              <td>{todo.time} horas</td>
-              <td>
-                <button className={styles.iconEditTable}>
-                  <TiEdit />
-                </button>
-              </td>
+              <td>{todo.startTime} Hr</td>
+              <td>{todo.endTime} Hr</td>
               <td>
                 <button
                   className={styles.iconDeleteTable}
