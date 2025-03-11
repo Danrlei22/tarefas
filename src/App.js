@@ -64,6 +64,36 @@ function App() {
     }
   };
 
+  const fieldNames = {
+    title: "Descrição",
+    startTime: "Início",
+    endTime: "Fim",
+  };
+
+  const handleUpdate = async (id, updateFields, index) => {
+    const response = await fetch(`${API}/todos/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(updateFields),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const updateTodo = await response.json();
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) => (todo.id === id ? updateTodo : todo))
+      );
+      const updateField = Object.keys(updateFields)[0]; // Campo que atualizou
+      const fieldName = fieldNames[updateField];
+      toast.success(
+        `Tarefa "N°${index + 1}" atualizado o campo "${fieldName}"!`
+      );
+    } else {
+      toast.error("Erro ao atualizar");
+    }
+  };
+
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -80,7 +110,13 @@ function App() {
         setEndTime={setEndTime}
       />
       <h2 className="titleList">Lista de tarefas</h2>
-      <TodoList todos={todos} onDelete={handleDelete} loading={loading} />
+      <p className="instruction">Dê 2 cliques para atualizar o campo desejado.</p>
+      <TodoList
+        todos={todos}
+        onDelete={handleDelete}
+        onUpdate={handleUpdate}
+        loading={loading}
+      />
       <ToastContainer position="bottom-center" autoClose={5000} />
     </div>
   );

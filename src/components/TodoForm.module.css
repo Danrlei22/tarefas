@@ -42,6 +42,11 @@
   width: 70px;
 }
 
+.formControl input[type= "time"]{
+  background-color: #d7d7d7;
+  color: #000;
+}
+
 .formControl input {
   border: 1px solid #222;
   border-radius: 2px;
