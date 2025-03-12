@@ -6,7 +6,7 @@ import "./App.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API = "http://localhost:5000";
+const API = "http://192.168.11.10:5000";
 
 function App() {
   const [todos, setTodos] = useState([]);
