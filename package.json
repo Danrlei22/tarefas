@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
     "server": "json-server --watch data/db.json --port 5000"
   },
   "repository": {
