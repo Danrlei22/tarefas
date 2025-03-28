@@ -6,7 +6,8 @@ import "./App.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API = "https://96ae-177-204-154-90.ngrok-free.app/todos";
+//const API = "https://9963-177-204-154-90.ngrok-free.app/todos";
+const API = "http://localhost:5000/todos";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -28,6 +29,7 @@ function App() {
       }
 
       const data = await response.json();
+      console.log("Dados recebidos:", data);
       setTodos(data);
     } catch (e) {
       //console.error("Erro ao buscar tarefa:", e);
