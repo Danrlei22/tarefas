@@ -17,8 +17,6 @@ Facilitar a organização do seu dia, ajudando a gerenciar suas tarefas de forma
 
 - **React**: Biblioteca para construção de interfaces de usuário.
 
-## Instruções de Uso
-
 # Iniciar Backend
 
 npm run server
